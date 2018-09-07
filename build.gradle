@@ -1,0 +1,53 @@
+apply from: "$rootDir/gradle/dependencies.gradle"
+apply plugin: 'idea'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
+}
+
+allprojects {
+
+    apply plugin: 'java'
+
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+}
+
+subprojects {
+
+    apply plugin: 'java'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+
+    jar {
+        baseName = project['artifactId']
+        version = project['version']
+    }
+
+    task sourcesJar(type: Jar) {
+        baseName = project['artifactId']
+        version = project['version']
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts {
+        archives sourcesJar
+    }
+
+}

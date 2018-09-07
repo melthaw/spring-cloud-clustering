@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: ${EUREKA_INSTANCE_HOST:localhost}
+    non-secure-port: ${EUREKA_INSTANCE_PORT:8080}
+    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${eureka.instance.hostname}:${eureka.instance.non-secure-port}:${random.value}
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_SERVICE_URL:'http://registry/eureka/'}

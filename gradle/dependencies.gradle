@@ -1,0 +1,4 @@
+ext {
+    springBootVersion = "1.5.10.RELEASE"
+    springCloudVersion = "Dalston.SR1"
+}

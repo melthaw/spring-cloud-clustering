@@ -1,0 +1,11 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_SERVICE_URL:http://registry/eureka/}
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0

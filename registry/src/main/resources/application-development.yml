@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    enableSelfPreservation: ${EUREKA_ENABLE_SELF_PRESERV:false}   #for develop mode
+  client:
+    register-with-eureka: false  # for standalone mode
+    fetch-registry: false   # for standalone mode
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
