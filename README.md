@@ -49,14 +49,8 @@ Now let's verify the case step by step
 
 case | url | expected
 ---|---|---
-gateway 1 routing | http://127.0.0.1:8080/routes |  ```{
-                                                    "/registry/**": "registry",
-                                                    "/openapi/**": "openapi"
-                                                    }```
-gateway 2 routing | http://127.0.0.1:8081/routes | ```{
-                                                   "/registry/**": "registry",
-                                                   "/openapi/**": "openapi"
-                                                   }```
+gateway 1 routing | http://127.0.0.1:8080/routes |  `{ "/registry/**": "registry", "/openapi/**": "openapi" }`
+gateway 2 routing | http://127.0.0.1:8081/routes | `{ "/registry/**": "registry", "/openapi/**": "openapi" }`
 registry 1 | http://127.0.0.1:8761 |
 registry 2 | http://127.0.0.1:8762 |
 call openapi # hello world | http://127.0.0.1:8080/openapi/hello-world | `hello world`
