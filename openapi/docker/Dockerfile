@@ -1,6 +1,6 @@
-FROM clouthink/jre
+FROM clouthinkin/jre
 
-ADD build/libs/mes/hello-world-1.0.0-SNAPSHOT.jar /hello-world-1.0.0-SNAPSHOT.jar
+ADD build/libs/scc-openapi-1.0.0-SNAPSHOT.jar /scc-openapi-1.0.0-SNAPSHOT.jar
 ADD docker/container_files/ /
 
 RUN chmod +x /*.sh

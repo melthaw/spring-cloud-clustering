@@ -5,4 +5,4 @@ JAR_VERSION=1.0.0
 echo "Using JAVA_OPTS=$JAVA_OPTS"
 echo "CMD Args: $@"
 
-java $JAVA_OPTS -jar "/gateway-${JAR_VERSION}-SNAPSHOT.jar" "$@"
+java $JAVA_OPTS -jar "/scc-gateway-${JAR_VERSION}-SNAPSHOT.jar" "$@"

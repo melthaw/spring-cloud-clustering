@@ -1,0 +1,41 @@
+version: '2.1'
+services:
+  gateway:
+    container_name: scc-gateway
+    build:
+      context: gateway
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - registry
+      - openapi
+    links:
+      - registry
+      - openapi
+    ports:
+      - "8080:8080"
+    environment:
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry:8080/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=development
+
+  registry:
+    container_name: scc-registry
+    build:
+      context: registry
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8761:8080"
+    environment:
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=development
+
+  openapi:
+    container_name: scc-openapi
+    build:
+      context: openapi
+      dockerfile: docker/Dockerfile
+    links:
+      - registry
+    environment:
+      EUREKA_INSTANCE_HOST: openapi
+      EUREKA_INSTANCE_PORT: 8080
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry:8080/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=development

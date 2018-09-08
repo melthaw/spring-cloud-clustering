@@ -1,6 +1,6 @@
 rootProject.name = 'spring-cloud-clustering'
 
 include "openapi"
-include "consumer"
+//include "consumer"
 include "gateway"
 include "registry"

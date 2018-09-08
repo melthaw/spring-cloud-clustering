@@ -1,6 +1,8 @@
 server:
   port: 8080
 
+management.security.enabled: false
+
 eureka:
   client:
     register-with-eureka: false

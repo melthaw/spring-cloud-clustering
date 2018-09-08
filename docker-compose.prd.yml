@@ -1,0 +1,74 @@
+version: '2.1'
+services:
+  gateway:
+    container_name: scc-gateway
+    build:
+      context: gateway
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - registry1
+      - registry2
+      - openapi1
+      - openapi2
+    links:
+      - registry1
+      - registry2
+      - openapi1
+      - openapi2
+    environment:
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry1/eureka,http://registry2/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production
+
+  registry1:
+    container_name: scc-registry1
+    build:
+      context: registry
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8761:80"
+    environment:
+      EUREKA_INSTANCE_HOST: registry1
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry2/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production
+  registry2:
+    container_name: scc-registry2
+    build:
+      context: registry
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8762:80"
+    environment:
+      EUREKA_INSTANCE_HOST: registry2
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry1/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production
+
+  openapi1:
+    container_name: scc-openapi1
+    build:
+      context: openapi
+      dockerfile: docker/Dockerfile
+    links:
+      - registry1
+      - registry2
+    ports:
+      - "8080:80"
+    environment:
+      EUREKA_INSTANCE_HOST: openapi1
+      EUREKA_INSTANCE_PORT: 80
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry1/eureka,http://registry2/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production
+  openapi2:
+    container_name: scc-openapi2
+    build:
+      context: openapi
+      dockerfile: docker/Dockerfile
+    links:
+      - registry1
+      - registry2
+    ports:
+      - "8080:80"
+    environment:
+      EUREKA_INSTANCE_HOST: openapi2
+      EUREKA_INSTANCE_PORT: 80
+      EUREKA_DEFAULT_SERVICE_URL: 'http://registry1/eureka,http://registry2/eureka'
+      JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production

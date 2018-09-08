@@ -1,4 +1,4 @@
-FROM clouthink/jre
+FROM clouthinkin/jre
 
 ADD build/libs/mes/consumer-1.0.0-SNAPSHOT.jar /consumer-1.0.0-SNAPSHOT.jar
 ADD docker/container_files/ /
