@@ -28,8 +28,8 @@ First, Let's start the whole clustering servers.
 
 ```
 gradle clean build
-docker-compose build
-docker-compose up
+docker-compose -f docker-compose.prd.yml build
+docker-compose -f docker-compose.prd.yml up
 ```
 
 Now let's validate the case step by step

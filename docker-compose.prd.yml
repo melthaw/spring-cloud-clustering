@@ -18,6 +18,7 @@ services:
     ports:
       - "8080:80"
     environment:
+      EUREKA_INSTANCE_HOST: gateway
       EUREKA_DEFAULT_SERVICE_URL: 'http://registry1/eureka,http://registry2/eureka'
       JAVA_OPTS: -Xmx1024m -Xms256m -Dspring.profiles.active=production
 
