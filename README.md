@@ -56,13 +56,13 @@ registry 2 | http://127.0.0.1:8762 |
 call openapi # hello world | http://127.0.0.1:8080/openapi/hello-world | `hello world`
 call openapi # hello world | http://127.0.0.1:8081/openapi/hello-world | `hello world`
 call openapi # routing | http://127.0.0.1:8080/openapi/routing | Routing Zuul[gateway1] to MicroService[openapi1]
-  |  | Routing Zuul[gateway1] to MicroService[openapi2]
+ _ | _ | Routing Zuul[gateway1] to MicroService[openapi2]
 call openapi # routing | http://127.0.0.1:8081/openapi/routing | Routing Zuul[gateway2] to MicroService[openapi1]
-  |  | Routing Zuul[gateway2] to MicroService[openapi2]
+ _ | _ | Routing Zuul[gateway2] to MicroService[openapi2]
 call nginx # routing | http://127.0.0./openapi/routing | Routing Zuul[gateway1] to MicroService[openapi1]
-  |  | Routing Zuul[gateway1] to MicroService[openapi2]
-  |  | Routing Zuul[gateway2] to MicroService[openapi1]
-  |  | Routing Zuul[gateway2] to MicroService[openapi2]
+ _ | _ | Routing Zuul[gateway1] to MicroService[openapi2]
+ _ | _ | Routing Zuul[gateway2] to MicroService[openapi1]
+ _ | _ | Routing Zuul[gateway2] to MicroService[openapi2]
 
 
 
