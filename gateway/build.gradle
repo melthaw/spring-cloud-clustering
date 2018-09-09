@@ -21,9 +21,11 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework.boot:spring-boot-starter-web"
 
-//    compile "org.springframework.cloud:spring-cloud-starter-sleuth"
     compile "org.springframework.cloud:spring-cloud-starter-zuul"
     compile "org.springframework.cloud:spring-cloud-starter-eureka"
+//    compile "org.springframework.cloud:spring-cloud-starter-sleuth"
+    compile "org.springframework.cloud:spring-cloud-starter-hystrix"
+    compile "org.springframework.cloud:spring-cloud-starter-hystrix-dashboard"
 
 }
 

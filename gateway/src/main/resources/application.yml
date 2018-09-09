@@ -2,6 +2,13 @@ server:
   port: 80
   address: 0.0.0.0
 
+logging:
+  level:
+    root: WARN
+    com.netflix.loadbalancer: DEBUG
+#    org.springframework: INFO
+#    org.springframework.cloud: DEBUG
+
 spring:
   profiles:
     active: development

@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_INSTANCE_HOST:localhost}
   server:
     enableSelfPreservation: ${EUREKA_ENABLE_SELF_PRESERV:false}   #for develop mode
   client:

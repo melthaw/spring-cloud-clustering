@@ -10,4 +10,4 @@ eureka:
   client:
     registerWithEureka: true
     serviceUrl:
-      defaultZone: ${EUREKA_DEFAULT_SERVICE_URL:'http://registry/eureka/'}
+      defaultZone: ${EUREKA_DEFAULT_SERVICE_URL:'http://registry:8080/eureka/'}
